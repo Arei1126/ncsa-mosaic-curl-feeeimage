@@ -190,6 +190,9 @@ int selectedAgent=0;
  *   It is really quick and dirty, but this makes Mosaic browser works in 2024.
  ****************************************************************************/
 static char *hack_download_from_curl(char *url){
+	HTProgress("Fetching document");
+	HTCheckActiveIcon(1);
+
 #ifndef DISABLE_TRACE
 	if(srcTrace){
 	//fprintf(stderr,"\n%s\n\n",MAGICAL);
@@ -295,10 +298,11 @@ static char *hack_download_from_curl(char *url){
 		res = curl_easy_perform(curl);
 
 		if(!(res == CURLE_OK)){
-
+			HTProgress("Failed load document");
 			curl_easy_cleanup(curl);
 			return -1;
 		}
+		HTProgress("Load success document");
 
 
 
@@ -350,7 +354,9 @@ static char *hack_download_from_curl(char *url){
  *   are set to make this happen.
  *   This must be made cleaner.
  ****************************************************************************/
-int download_file_curl(char *url, char *fnam){
+int download_file_curl(char *url, char *fnam){	
+	HTProgress("Fetching file");
+	HTCheckActiveIcon(1);
 #ifndef DISABLE_TRACE
 	if(srcTrace){
 	//fprintf(stderr,"\n%s\n\n",MAGICAL);
@@ -398,11 +404,14 @@ int download_file_curl(char *url, char *fnam){
 
 		if(res == CURLE_OK){	
 			// イージーハンドルのクリーンアップ
+			HTProgress("Load success file");
 			curl_easy_cleanup(curl);
 			return 1;
 		}
 		else{
+
 			// イージーハンドルのクリーンアップ
+			HTProgress("Failed to load file");
 			curl_easy_cleanup(curl);
 			return -1;
 		}
