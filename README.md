@@ -1,7 +1,6 @@
 NCSA Mosaic Curl
 ===========
-
-![GitHub viewed with Mosaic](http://github.com/downloads/alandipert/ncsa-mosaic/github.png "GitHub with Mosaic")
+[Original repository](https://github.com/alandipert/ncsa-mosaic)
 
 This is NCSA Mosaic 2.7, one of the first graphical web browsers.
 If you're on Ubuntu or something like it, your time machine is fueled
@@ -9,7 +8,8 @@ up and ready to go.  Follow the instructions below to build and run.
 
 Many thanks to [Sean MacLennan and Alan Wylie](https://web.archive.org/web/20120915154245/seanm.ca/mosaic/) for doing the heavy lifting.  And, of course, hats off to Marc Andreessen, Eric Bina, and the rest of the [NCSA](http://www.ncsa.illinois.edu/) team for kicking things off for us.  Thanks!
 
-[Original repository](https://github.com/alandipert/ncsa-mosaic)
+
+
 Building
 --------
 
