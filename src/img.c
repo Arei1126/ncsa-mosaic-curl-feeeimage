@@ -599,33 +599,6 @@ stuffcache:
 	}
 
 	data = ReadBitmap(fnam, &width, &height, colrs, &bg);
-#ifndef DISABLE_TRACE	
-	/*
-	if(srcTrace){
-		for(int i = 0; i < 256; i++){
-			XColor c = colrs[i];
-			fprintf(stderr,"colrs[%d]\npixel: %lu\nred: %hu, green: %hu, blue: %hu\nflags: %d, pad: %d\n\n",i,c.pixel,c.red,c.green,c.blue,c.flags,c.pad);
-		}
-
-		if (srcTrace) {
-			fprintf(stderr,"\n\nAFTER\nwidth = %d\n", width);
-			fprintf(stderr,"height = %d\n", height);	
-			fprintf(stderr,"filename = %s\n", fnam);	
-
-			FILE *my_fp = fopen("test.raw","w+");
-			//fputs(data,my_fp);
-			fwrite(data,1,width*height,my_fp);
-
-			fclose(my_fp);
-
-
-		}
-	}
-	*/
-#endif
-
-	
-	
 
 #ifndef DISABLE_TRACE
 	if (srcTrace)
