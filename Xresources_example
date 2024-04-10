@@ -1,0 +1,57 @@
+Mosaic*DefaultHotlistFile: .mosaic-hotlist
+Mosaic*HomeDocument: https:\/\/www.google.com\/
+Mosaic*imageViewInternal: True
+Mosaic*proxySpecfile:	/home/yuuri/mosaic/proxy
+Mosaic*EnableTables: False
+
+Mosaic*HttpTrace: False
+Mosaic*ww2Trace: False
+Mosaic*SrcTrace: False
+!Mosaic*SrcTrace: True
+Mosaic*CacheTrace: False
+
+Mosaic*Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*TitleFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*ItalicFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*BoldFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*FixedFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header1Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header2Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header3Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header4Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header5Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*Header6Font: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*AddressFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*PlainFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*ListingFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*SupSubFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*MeterFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*ToolbarFont: -gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+
+Mosaic*XmLabel*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmLabelGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmScale*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmBulletinBoard*labelFontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*optionmenu.XmLabelGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmPushButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmPushButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmToggleButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmToggleButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*optionmenu*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmIconGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmBulletinBoard*buttonFontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*menubar*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmPushButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmLabelGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmPushButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmCascadeButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmCascadeButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmCascadeButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmCascadeButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmToggleButton*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmMenuShell*XmToggleButtonGadget*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*pulldownmenu*fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmList:	*fontList-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmText.fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+Mosaic*XmTextField.fontList:	-gnu-unifont-*-r-normal-sans-17-120-100-100-c-*-iso10646-*
+

@@ -1,4 +1,4 @@
-/****************************************************************************
+/***************************************************************************
  * NCSA Mosaic for the X Window System                                      *
  * Software Development Group                                               *
  * National Center for Supercomputing Applications                          *
@@ -114,6 +114,8 @@ char *saveFileName=NULL;
 
 #define MO_BUFFER_SIZE 8192
 
+#define UA "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) NCSA=Mosaic/2.7b6 (X11;Linux 5.10.0-28-amd64 x86_64) libwww/2.12 modified curl version"
+
 /* Bare minimum. */
 struct _HText {
   char *expandedAddress;
@@ -192,12 +194,9 @@ int selectedAgent=0;
 static char *hack_download_from_curl(char *url){
 	HTProgress("Fetching document");
 	HTCheckActiveIcon(1);
+	HTMeter(0,NULL);
 
-#ifndef DISABLE_TRACE
-	if(srcTrace){
-	//fprintf(stderr,"\n%s\n\n",MAGICAL);
-	}
-#endif
+
 
 	struct memory {
 		char *response;
@@ -254,17 +253,8 @@ static char *hack_download_from_curl(char *url){
     	CURLcode res;
 
 	char *URL = url;
-/*
-	struct Buffer *buffer;
-	buffer = (struct Buffer *)malloc(sizeof(struct Buffer));
-	buffer->data = NULL;
-	buffer->data_size = 0;
-	*/
 
 	struct memory chunk = {0};
-
-	// libcurlの初期化
-	//curl_global_init(CURL_GLOBAL_ALL);
 
 	// イージーハンドルの作成
 	curl = curl_easy_init();
@@ -273,13 +263,8 @@ static char *hack_download_from_curl(char *url){
 		curl_easy_setopt(curl, CURLOPT_URL, URL);
 		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1);  // ちゃんと証明を確認する
 
-		//curl_easy_setopt(curl, CURLOPT_USE_SSL, (long)CURLUSESSL_NONE);
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
 		
-		/*
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, my_write_callback);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA,(void *)buffer);
-		*/ 
 
 		/* send all data to this function  */
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cb);
@@ -288,10 +273,7 @@ static char *hack_download_from_curl(char *url){
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
 
 		//curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36");
-		curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) NCSA=Mosaic/2.7b6 (X11;Linux 5.10.0-28-amd64 x86_64) libwww/2.12 modified curl version");
-		//curl_easy_setopt(curl, CURLOPT_USERAGENT, "NCSA_Mosaic/2.7b4 (X11;AIX 1 000180663000)");
-
-	//curl_easy_setopt(curl, CURLOPT_USERAGENT, "NetSurf/3.10 (Linux)");
+		curl_easy_setopt(curl, CURLOPT_USERAGENT, UA);
 
 
 		// HTTPリクエストの実行
@@ -299,15 +281,11 @@ static char *hack_download_from_curl(char *url){
 
 		if(!(res == CURLE_OK)){
 			HTProgress("Failed load document");
+			HTMeter(100,NULL);
 			curl_easy_cleanup(curl);
 			return -1;
 		}
 		HTProgress("Load success document");
-
-
-
-
-
 
 		if(!HTMainText){
 			HTMainText = HText_new();
@@ -318,23 +296,20 @@ static char *hack_download_from_curl(char *url){
 		HTMainText->simpleAddress = NULL;
 		free(HTMainText->htmlSrc);
 		HTMainText->htmlSrc;
-		//HTMainText->htmlSrc = strdup(buffer->data);
-		//HTMainText->htmlSrc = buffer->data;
 		HTMainText->htmlSrc = chunk.response;
 		
 		HTMainText->srcalloc = (int)res;
 		HTMainText->srclen = (int)res;
-
-
-		//HTMainText->srcalloc = (int)res;
-		//HTMainText->srclen = (int)res;
+		
+		//char *rurl = NULL;
+		//curl_easy_getinfo(curl, CURLINFO_EFFECTIVE_URL, &rurl);
+		//fprintf(stderr,"%s\n",rurl);
+		
 		// イージーハンドルのクリーンアップ
 		curl_easy_cleanup(curl);
+		HTMeter(100,NULL);
 		return 1;
 	}
-
-	// libcurlのクリーンアップ
-	//curl_global_cleanup();
 
 	return -1;
 }
@@ -357,23 +332,16 @@ static char *hack_download_from_curl(char *url){
 int download_file_curl(char *url, char *fnam){	
 	HTProgress("Fetching file");
 	HTCheckActiveIcon(1);
-#ifndef DISABLE_TRACE
-	if(srcTrace){
-	//fprintf(stderr,"\n%s\n\n",MAGICAL);
-	}
-#endif
-
+	HTMeter(0,NULL);
 
 	CURL *curl;
 	CURLcode res;
+
 #ifndef DISABLE_TRACE
 	if(srcTrace){
 	fprintf(stderr,"[download_file_curl,src,fnam]:%s,%s\n",url,fnam);
 	}
 #endif
-
-	// libcurlの初期化
-	//curl_global_init(CURL_GLOBAL_ALL);
 
 	// イージーハンドルの作成
 	curl = curl_easy_init();
@@ -382,10 +350,10 @@ int download_file_curl(char *url, char *fnam){
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1);  // ちゃんと証明を確認する
 		
-		//curl_easy_setopt(curl, CURLOPT_USE_SSL, (long)CURLUSESSL_NONE);
 		
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-		curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) NCSA=Mosaic/2.7b6 (X11;Linux 5.10.0-28-amd64 x86_64) libwww/2.12 modified curl version");
+		curl_easy_setopt(curl, CURLOPT_USERAGENT, UA);
+		//curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) NCSA=Mosaic/2.7b6 (X11;Linux 5.10.0-28-amd64 x86_64) libwww/2.12 modified curl version");
 
 		FILE *fp = fopen(fnam,"w+");
 		if(!fp){
@@ -397,14 +365,12 @@ int download_file_curl(char *url, char *fnam){
 
 		// HTTPリクエストの実行
 		res = curl_easy_perform(curl);
-
-
-		//curl_global_cleanup();
 		fclose(fp);
 
 		if(res == CURLE_OK){	
 			// イージーハンドルのクリーンアップ
 			HTProgress("Load success file");
+			HTMeter(100,NULL);
 			curl_easy_cleanup(curl);
 			return 1;
 		}
@@ -412,14 +378,11 @@ int download_file_curl(char *url, char *fnam){
 
 			// イージーハンドルのクリーンアップ
 			HTProgress("Failed to load file");
+			HTMeter(100,NULL);
 			curl_easy_cleanup(curl);
 			return -1;
 		}
 	}
-
-	// libcurlのクリーンアップ
-	//curl_global_cleanup();
-
 	return mo_fail;
 }
 
